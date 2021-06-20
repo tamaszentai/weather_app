@@ -2,15 +2,16 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import InputField from './components/inputField';
+import InformationBox from './components/informationBox';
 
 function App() {
   const [cityName, setCityName] = useState('');
-  const [data, setData] = useState();
+  const [data, setData] = useState(Object);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function(position) {
       const locationBasedCall = async () => {
-        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${process.env.REACT_APP_APIKEY}`)
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`)
         const data = await response.json();
         setData(data);
         console.log(data);
@@ -33,9 +34,12 @@ function App() {
     setData(data);
   }
 
+  console.log(data.name);
+
   return (
     <div className="App">
       <InputField cityNameHandler={cityNameOnChangeHandler} value={cityName} submit={onSubmitHandler}/>
+      {data.name && <InformationBox data={data}/>}
     </div>
   );
 }
