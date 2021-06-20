@@ -1,0 +1,15 @@
+.input-field {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.input-field input{
+    margin-top: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    width: 20rem;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    outline: none;
+}

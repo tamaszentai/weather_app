@@ -1,13 +1,15 @@
 import React from 'react';
+import './informationBox.css';
+
+import LoadingSpinner from './loadingSpinner';
 
 const informationBox = (props: any) => {
     
     return (
-        <div>
+        <div className="information-box">
+            {!props.isLoading ? (<> <h1>{props.data.name}</h1>
+            <h2>{props.data.weather[0].description}</h2>
             <ul>
-                <li>
-                {props.data.name}
-                </li>
                 <li>
                     Temperature:
                 {Math.round(props.data.main.temp)}
@@ -16,7 +18,8 @@ const informationBox = (props: any) => {
                     Feels like: 
                 {Math.round(props.data.main.feels_like)}
                 </li>
-            </ul>
+            </ul></>) : <LoadingSpinner />}
+          
             
             
         </div>
