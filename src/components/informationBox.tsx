@@ -1,8 +1,5 @@
 import "./informationBox.css";
 
-import InputField from "./inputField";
-import LoadingSpinner from "./loadingSpinner";
-
 const informationBox = (props: any) => {
   const temperature = () => {
     if (Math.round(props.data.main.temp) >= 27) {
@@ -22,17 +19,6 @@ const informationBox = (props: any) => {
 
   return (
     <div className="information-box">
-         <div className="header">
-            <h1 id="header-h1">Mind-Blowing Instant Weather</h1>
-        </div>
-      <InputField
-        cityNameChangeHandler={props.cityNameChangeHandler}
-        value={props.value}
-        submit={props.submit}
-      />
-      {!props.isLoading ? (
-        <>
-          {" "}
           <h1 id="city-name">{props.data.name}</h1>
           <img
             src={`https://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
@@ -61,10 +47,6 @@ const informationBox = (props: any) => {
               </td>             
             </tr>
           </table>
-        </>
-      ) : (
-        <LoadingSpinner />
-      )}
     </div>
   );
 };

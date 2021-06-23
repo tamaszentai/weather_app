@@ -4,3 +4,23 @@
 body {
   background-color: lightblue;
 }
+
+main {
+    padding: 1rem 0;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 18rem;
+    height: 35rem;
+    box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-family: "Caveat", cursive;
+    border-radius: 25px;
+    background-color: lightyellow;
+    border: 2px black solid;
+}
+
+main .header {
+  margin: 1rem auto 1rem auto;
+  font-family: "Pacifico", cursive;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
