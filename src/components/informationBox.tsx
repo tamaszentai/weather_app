@@ -1,29 +1,72 @@
-import React from 'react';
-import './informationBox.css';
+import "./informationBox.css";
 
-import LoadingSpinner from './loadingSpinner';
+import InputField from "./inputField";
+import LoadingSpinner from "./loadingSpinner";
 
 const informationBox = (props: any) => {
-    
-    return (
-        <div className="information-box">
-            {!props.isLoading ? (<> <h1>{props.data.name}</h1>
-            <h2>{props.data.weather[0].description}</h2>
-            <ul>
-                <li>
-                    Temperature:
-                {Math.round(props.data.main.temp)}
-                </li>
-                <li>
-                    Feels like: 
-                {Math.round(props.data.main.feels_like)}
-                </li>
-            </ul></>) : <LoadingSpinner />}
-          
-            
-            
+  const temperature = () => {
+    if (Math.round(props.data.main.temp) >= 27) {
+      return <h1 className="hot">{Math.round(props.data.main.temp)}°C</h1>
+    } else if (Math.round(props.data.main.temp) < 27 && Math.round(props.data.main.temp) >= 15 ) {
+      return <h1 className="warm">{Math.round(props.data.main.temp)}°C</h1>
+    } 
+    else if (Math.round(props.data.main.temp) < 15 && Math.round(props.data.main.temp) >= 5) {
+      return <h1 className="normal">{Math.round(props.data.main.temp)}°C</h1>
+    } else if (Math.round(props.data.main.temp) < 5 && Math.round(props.data.main.temp) >= -10) {
+      return <h1 className="cold">{Math.round(props.data.main.temp)}°C</h1>
+    } else {
+      return <h1 className="extreme-cold">{Math.round(props.data.main.temp)}°C</h1>
+    }
+  }
+
+
+  return (
+    <div className="information-box">
+         <div className="header">
+            <h1 id="header-h1">Mind-Blowing Instant Weather</h1>
         </div>
-    )
-}
+      <InputField
+        cityNameChangeHandler={props.cityNameChangeHandler}
+        value={props.value}
+        submit={props.submit}
+      />
+      {!props.isLoading ? (
+        <>
+          {" "}
+          <h1 id="city-name">{props.data.name}</h1>
+          <img
+            src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
+          />
+          {temperature()}
+          <h2>{props.data.weather[0].description}</h2>
+          <table>
+            <tr>
+              <td>
+              <td><th>Feels like:</th></td>
+              <td>{Math.round(props.data.main.feels_like)}°C</td>
+              </td>
+              <td>
+              <td><th>Humidity:</th></td>
+              <td>{Math.round(props.data.main.humidity)}%</td>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <td><th>Min:</th></td>
+              <td>{Math.round(props.data.main.temp_min)}°C</td>
+              </td>
+              <td>
+              <td><th>Max:</th></td>
+              <td>{Math.round(props.data.main.temp_max)}°C</td>
+              </td>             
+            </tr>
+          </table>
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
+    </div>
+  );
+};
 
 export default informationBox;

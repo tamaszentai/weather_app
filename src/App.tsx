@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import InputField from "./components/inputField";
 import InformationBox from "./components/informationBox";
 
 function App() {
@@ -18,15 +17,12 @@ function App() {
         const data = await response.json();
         setData(data);
         setIsLoading(false);
-        console.log(data);
       };
       locationBasedCall();
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
     });
   }, []);
 
-  const cityNameOnChangeHandler = (event: any) => {
+  const cityNameChangeHandler = (event: any) => {
     setCityName(event.target.value);
   };
 
@@ -35,22 +31,24 @@ function App() {
     const response = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
     );
-    const data = await response.json();
-    console.log(data);
-    setData(data);
+    if (response.ok) {
+      const data = await response.json();
+      setData(data);
+    } else {
+      alert(`City ${response.statusText}`);
+    }
   };
-
-  console.log(data.name);
 
   return (
     <div className="App">
       <main>
-        <InputField
-          cityNameHandler={cityNameOnChangeHandler}
+        <InformationBox
+          isLoading={isLoading}
+          data={data}
+          cityNameChangeHandler={cityNameChangeHandler}
           value={cityName}
           submit={onSubmitHandler}
         />
-        <InformationBox isLoading={isLoading} data={data}/>
       </main>
     </div>
   );

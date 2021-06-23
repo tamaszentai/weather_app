@@ -1,18 +1,62 @@
 .information-box {
-    padding: 2rem 0;
-    margin: 2rem auto;
-    text-align: center;
-    max-width: 20rem;
-    height: 30rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: white;
+  padding: 1rem 0;
+  margin: 2rem auto;
+  text-align: center;
+  max-width: 18rem;
+  height: 35rem;
+  box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: "Caveat", cursive;
+  border-radius: 25px;
+  background-color: lightyellow;
+  border: 2px black solid;
 }
 
-.information-box ul {
-    list-style: none;
-    padding: 0;
+.information-box .header {
+  margin: 1rem auto 1rem auto;
+  font-family: "Pacifico", cursive;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
-.information-box li {
-    margin: 1rem;
+#header-h1 {
+  margin: 0;
+  color: pink;
+}
+
+#city-name {
+  color: salmon;
+}
+
+.information-box img {
+  border-radius: 10px;
+  background-color: lightblue;
+}
+
+table {
+  margin: 0 auto;
+  font-size: 1.2rem;
+}
+
+td {
+  width: auto;
+}
+
+.hot {
+  color: red;
+}
+
+.warm {
+  color: orange
+}
+
+.normal {
+  color: lightgreen;
+}
+
+.cold {
+  color: royalblue;
+}
+
+.extreme-cold {
+  color: blue;
 }
