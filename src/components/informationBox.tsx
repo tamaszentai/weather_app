@@ -21,7 +21,7 @@ const informationBox = (props: any) => {
     <div className="information-box">
           <h1 id="city-name">{props.data.name}</h1>
           <img
-            src={`https://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`}
+            src={`https://openweathermap.org/img/wn/${props.data.weather[0].icon}.png`} alt="current weather"
           />
           {temperature()}
           <h2>{props.data.weather[0].description}</h2>
