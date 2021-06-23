@@ -12,7 +12,7 @@ function App() {
     navigator.geolocation.getCurrentPosition(function (position) {
       const locationBasedCall = async () => {
         const response = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+          `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
         );
         const data = await response.json();
         setData(data);
@@ -29,7 +29,7 @@ function App() {
   const onSubmitHandler = async (event: any) => {
     event.preventDefault();
     const response = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${process.env.REACT_APP_APIKEY}`
     );
     if (response.ok) {
       const data = await response.json();
